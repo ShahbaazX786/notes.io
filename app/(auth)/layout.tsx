@@ -18,7 +18,13 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                     particleCount={100}
                     baseHue={120}
                     className="flex items-center flex-col justify-center px-2 md:px-10  py-4 w-full h-full" />
-                <div className="absolute flex flex-col justify-center items-center gap-5 bottom-[20%] left-[15%]">
+                <motion.div initial={{ opacity: 0.0, y: -50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                        delay: 0.3,
+                        duration: 0.8,
+                        ease: "easeInOut",
+                    }} className="absolute flex flex-col justify-center items-center gap-5 bottom-[20%] left-[15%]">
                     <Image src={'/LoginLogo.png'} width={500} height={500} priority alt="Notes.io Logo" className={cn("md:text-4xl text-xl text-white relative z-20")} />
                     <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
                         Create Notes & Reminders
@@ -26,7 +32,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                     <p className="text-center mt-2 text-neutral-300 relative z-20">
                         Lorem ipsum dolor sit amet.
                     </p>
-                </div>
+                </motion.div>
             </div>
             <div className="col-span-1 w-full h-full">
                 <AuroraBackground>
@@ -34,7 +40,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                         initial={{ opacity: 0.0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{
-                            delay: 0.3,
+                            delay: 0.5,
                             duration: 0.8,
                             ease: "easeInOut",
                         }}
