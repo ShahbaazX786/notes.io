@@ -6,10 +6,11 @@ import { AuthLayoutProps } from "@/const/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import AuthToggleButton from "./components/AuthToggleButton";
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
     return (
-        <div className="grid md:grid-cols-2 sm:grid-cols-1 w-full min-h-screen">
+        <div className="grid md:grid-cols-2 sm:grid-cols-1 w-full min-h-screen relative">
             <div className="col-span-1 relative w-full h-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
                 <Vortex
                     backgroundColor="black"
@@ -41,6 +42,9 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
                     >
                         <div className="border-2 dark:border-white bg-white text-black drop-shadow-lg p-10 w-full h-full rounded-lg">
                             {children}
+                        </div>
+                        <div className="mt-5">
+                            <AuthToggleButton />
                         </div>
                     </motion.div>
                 </AuroraBackground>
