@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
 const AuthToggleButton = () => {
@@ -24,7 +24,7 @@ const AuthToggleButton = () => {
 
 
     return (
-        <div>
+        <div className="hover:scale-105 transition-all ease-linear">
             {url && url.includes('/signup') && (<Button onClick={() => { router.push(url) }} >Create A New Account?</Button>)}
             {url && url.includes('/login') && (<Button onClick={() => { router.push(url) }}>Login to your Account?</Button>)}
         </div>
