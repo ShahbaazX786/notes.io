@@ -1,4 +1,4 @@
-import LoginForm from "../components/LoginForm";
+import SignupForm from "../components/SignupForm";
 
 const SignUpComponent = () => {
     return (
@@ -7,7 +7,7 @@ const SignUpComponent = () => {
                 Welcome Back
             </h2>
             <div className="transition-all ease-linear h-full w-full max-w-96">
-                <LoginForm />
+                <SignupForm />
             </div >
         </div>
     )
