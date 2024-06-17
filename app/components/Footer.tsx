@@ -15,10 +15,10 @@ const FooterComponent = () => {
                     Capture ideas in a snap with Notes.io. <br />Share your thoughts instantly, anywhere.
                 </p>
 
-                <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+                <ul className="mt-8 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
                     {FooterMenu.map((item) => (
                         <li key={item.id}>
-                            <Link href={item.path} className="text-gray-700 transition hover:text-gray-700/75" > {item.link} </Link>
+                            <Link href={item.path} className="text-gray-700 transition hover:text-gray-700/75 hover:underline hover:underline-offset-2" > {item.link} </Link>
                         </li>
                     ))}
                 </ul>
