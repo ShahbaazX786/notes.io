@@ -5,3 +5,8 @@ export type AuthLayoutProps = {
 export type LandingLayoutProps = {
   children: React.ReactNode;
 };
+
+
+export type HomeLayoutProps = {
+  children: React.ReactNode;
+};
