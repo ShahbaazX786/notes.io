@@ -26,3 +26,13 @@ export interface FooterSocialItem {
 }
 
 export type FooterSocialTypes = FooterSocialItem[];
+
+export type NoteCardProps ={
+  note:Note;
+}
+
+export interface Note {
+  id: number;
+  title: string;
+  description: string;
+};
