@@ -4,9 +4,9 @@ import NoteCard from "./NoteCard";
 
 const NotesContainer = () => {
     return (
-        <div className="container relative">
+        <div className="container relative flex flex-col justify-center items-center">
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                {Notes.map((note)=>(
+                {Notes.map((note) => (
                     <NoteCard key={note.id} note={note} />
                 ))}
             </div>
