@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 const NavbarComponent = () => {
     return (
@@ -9,7 +11,12 @@ const NavbarComponent = () => {
                 <p className="text-2xl font-bold">otes.io</p>
             </Link>
             <div>Search Bar</div>
-            <div>Auth Status</div>
+            <div>
+                <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+            </div>
         </div>
     )
 }
