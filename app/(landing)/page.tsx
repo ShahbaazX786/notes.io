@@ -2,6 +2,7 @@ import LandingContent from "@/components/custom/LandingContent";
 import LandingFooter from "@/components/custom/LandingFooter";
 import LandingHero from "@/components/custom/LandingHero";
 import LandingNavbar from "@/components/custom/LandingNavbar";
+import { About } from "./components/about";
 
 const LandingPage = () => {
     return (
@@ -10,6 +11,7 @@ const LandingPage = () => {
             <LandingNavbar />
             <LandingHero />
             <LandingContent />
+            <About />
             <LandingFooter />
         </div>
     )
