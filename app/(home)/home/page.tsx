@@ -1,9 +1,10 @@
 import React from "react"
+import NotesContainer from "./components/NotesContainer";
 
 const HomeComponent = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
-            {children}
+            <NotesContainer />
         </div>
     )
 }
