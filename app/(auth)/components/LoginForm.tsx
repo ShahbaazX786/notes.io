@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { LoginFormSchema } from "@/const/schema"
+import { LoginFormSchema } from "@/lib/const/schema"
 import { z } from "zod"
 
 const LoginForm = () => {

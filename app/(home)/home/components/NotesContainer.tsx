@@ -1,4 +1,4 @@
-import { Notes } from "@/const/constants";
+import { Notes } from "@/lib/const/constants";
 import CreateNote from "./CreateNote";
 import NoteCard from "./NoteCard";
 

@@ -1,5 +1,5 @@
 import CustomTooltip from "@/components/customShadcn/customTooltip";
-import FooterMenu, { FooterSocials } from "@/const/constants";
+import FooterMenu, { FooterSocials } from "@/lib/const/constants";
 import Image from "next/image";
 import Link from "next/link";
 

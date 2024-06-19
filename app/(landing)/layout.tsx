@@ -1,4 +1,4 @@
-import { LandingLayoutProps } from "@/const/types";
+import { LandingLayoutProps } from "@/lib/const/types";
 
 const LandingLayout = ({ children }: LandingLayoutProps) => {
     return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { CardBody, CardContainer, CardItem } from "@/components/aceternity/3d_card";
-import { NoteCardProps } from "@/const/types";
+import { NoteCardProps } from "@/lib/const/types";
 
 const NoteCard = ({ note }: NoteCardProps) => {
     return (

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/use-toast"
-import { SignupFormSchema } from "@/const/schema"
+import { SignupFormSchema } from "@/lib/const/schema"
 import { z } from "zod"
 
 const SignupForm = () => {

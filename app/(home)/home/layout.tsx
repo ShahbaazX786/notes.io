@@ -1,6 +1,6 @@
 import FooterComponent from "@/app/components/Footer";
 import NavbarComponent from "@/app/components/Navbar";
-import { HomeLayoutProps } from "@/const/types";
+import { HomeLayoutProps } from "@/lib/const/types";
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
     return (

@@ -2,7 +2,7 @@
 
 import { AuroraBackground } from "@/components/aceternity/aurora_background";
 import { Vortex } from "@/components/aceternity/vortex";
-import { AuthLayoutProps } from "@/const/types";
+import { AuthLayoutProps } from "@/lib/const/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Image from "next/image";
