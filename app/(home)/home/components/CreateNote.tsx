@@ -14,7 +14,7 @@ const CreateNote = () => {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant={"link"} size={"icon"} className="w-14 h-14 hover:rotate-90 hover:scale-110 transition-all ease-linear duration-300 rounded-full"><IoIosAddCircle size={48} /></Button>
+                <Button variant={"link"} size={"icon"} className="w-14 h-14 hover:rotate-90 hover:scale-110 transition-all ease-linear duration-300 rounded-full"><IoIosAddCircle size={52} /></Button>
             </DialogTrigger>
             <DialogContent>
                 <DialogHeader>
