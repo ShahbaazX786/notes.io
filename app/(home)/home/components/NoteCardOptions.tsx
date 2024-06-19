@@ -2,8 +2,9 @@ import CustomTooltip from "@/components/customShadcn/customTooltip";
 import { Button } from "@/components/ui/button";
 import { FaCheck } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
 import { MdDeleteForever } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
+
 
 const NoteCardOptions = () => {
     return (
@@ -14,7 +15,7 @@ const NoteCardOptions = () => {
             </div>
             <div className="flex justify-between items-center gap-5">
                 <CustomTooltip icon={<Button variant={"outline"}><FaCheck /></Button>} name={'Mark As Complete'} />
-                <CustomTooltip icon={<Button variant={"secondary"}><IoMdClose /></Button>} name={'Mark As Not Complete'} />
+                <CustomTooltip icon={<Button variant={"secondary"}><IoClose size={18}/></Button>} name={'Mark As Pending'} />
             </div>
         </div>
     )
