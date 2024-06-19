@@ -21,8 +21,8 @@ const LandingNavbar = () => {
                 <h1 className={cn('text-2xl font-bold text-white -ml-1 leading-3 tracking-wide', font.className)}>otes.<b className="text-purple-700">io</b></h1>
             </Link>
             <div className="flex items-center gap-x-2">
-                <Link href={true ? '/dashboard' : '/sign-up'}>
-                    <Button variant={"outline"} className="rounded-full">Get Started</Button>
+                <Link href={true ? '/home' : '/sign-up'}>
+                    <Button variant={"premium"} className="rounded-full">{true ? 'Go To Notes' : 'Get Started'}</Button>
                 </Link>
             </div>
         </div>
