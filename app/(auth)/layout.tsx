@@ -1,7 +1,7 @@
 'use client';
 
-import { AuroraBackground } from "@/components/aurora_background";
-import { Vortex } from "@/components/vortex";
+import { AuroraBackground } from "@/components/aceternity/aurora_background";
+import { Vortex } from "@/components/aceternity/vortex";
 import { AuthLayoutProps } from "@/const/types";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
