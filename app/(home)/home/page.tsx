@@ -1,11 +1,8 @@
-import React from "react"
 import NotesContainer from "./components/NotesContainer";
 
-const HomeComponent = ({ children }: { children: React.ReactNode }) => {
+const HomeComponent = () => {
     return (
-        <div>
-            <NotesContainer />
-        </div>
+        <NotesContainer />
     )
 }
 
