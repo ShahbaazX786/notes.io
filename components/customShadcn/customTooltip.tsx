@@ -6,9 +6,9 @@ import {
 } from "@/components/ui/tooltip"
 
 
-const CustomTooltip = ({ name, icon }: any) => {
+const CustomTooltip = ({ name, icon, delay }: any) => {
     return (
-        <TooltipProvider delayDuration={100}>
+        <TooltipProvider delayDuration={delay | 100}>
             <Tooltip>
                 <TooltipTrigger>
                     {icon}
