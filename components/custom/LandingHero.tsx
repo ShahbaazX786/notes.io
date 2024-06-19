@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 const LandingHero = () => {
     // const isSignedIn = useAuth();
     return (
-        <HeroHighlight className="font-bold py-36 text-center space-y-5">
+        <HeroHighlight className="font-bold py-36 text-center">
             <motion.h1
                 initial={{
                     opacity: 0,
@@ -23,8 +23,8 @@ const LandingHero = () => {
                     ease: [0.4, 0.0, 0.2, 1],
                 }}
                 className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-black dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto">
-                <div className="space-y-5">
-                    <div className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold'>
+                <div className="space-y-8">
+                    <div className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold'>
                         <h1 className="text-white">The Best&nbsp;
                             <Highlight className="text-black dark:text-white">
                                 Notes App
@@ -36,7 +36,7 @@ const LandingHero = () => {
                     </div>
                     <div>
                         <Link href={true ? '/dashboard' : '/sign-up'} >
-                            <Button variant={'premium'} className='md:text-lg p-4 md:p-6 rounded-full font-semibold' >
+                            <Button variant={'premium'} className='md:text-lg p-4 md:p-6 rounded-full font-semibold scale-110 hover:scale-125 transition-all ease-linear' >
                                 Start Adding Notes For Free!
                             </Button>
                         </Link>
