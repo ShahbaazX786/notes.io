@@ -32,7 +32,7 @@ export type NoteCardProps ={
 }
 
 export interface Note {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   tags?: string[];
