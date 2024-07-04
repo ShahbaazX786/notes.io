@@ -5,9 +5,25 @@ import { NoteCardProps } from "@/lib/const/types";
 import NoteCardOptions from "./NoteCardOptions";
 
 const NoteCard = ({ note }: NoteCardProps) => {
+    const formatDate = (isoString: string | Date | any) => {
+        const date = new Date(isoString);
+
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const year = date.getFullYear();
+
+        return `${day}-${month}-${year}`;
+    };
+
     return (
         <CardContainer className="inter-var flex flex-row justify-center items-center my-4 drop-shadow-lg relative group">
             <CardBody className="bg-gray-50 relative group/card h-auto dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] rounded-xl p-8 border ">
+                <CardItem
+                    translateZ="50"
+                    className="absolute text-sm text-gray dark:text-white right-5 top-5"
+                >
+                    {formatDate(note.createdAt)}
+                </CardItem>
                 <CardItem
                     translateZ="50"
                     className="text-xl font-bold text-black dark:text-white"
