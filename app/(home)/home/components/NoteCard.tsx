@@ -46,7 +46,7 @@ const NoteCard = ({ note }: NoteCardProps) => {
                 </CardItem>
             </CardBody>
             <div className="absolute top-0 right-0  h-full group-hover:flex hidden group-hover:transition-all group-hover:ease-linear group-hover:duration-500 group-hover:delay-150">
-                <NoteCardOptions />
+                <NoteCardOptions uniqueId={note._id} />
             </div>
         </CardContainer>
     )
