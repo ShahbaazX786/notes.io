@@ -21,6 +21,13 @@ const NoteCard = ({ note }: NoteCardProps) => {
                 >
                     {note.description}
                 </CardItem>
+                <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="text-gray-800 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                >
+                    {'Tags: '+note.tags}
+                </CardItem>
             </CardBody>
             <div className="absolute top-0 right-0  h-full group-hover:flex hidden group-hover:transition-all group-hover:ease-linear group-hover:duration-500 group-hover:delay-150">
                 <NoteCardOptions />
