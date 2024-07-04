@@ -26,21 +26,21 @@ const NoteCard = ({ note }: NoteCardProps) => {
                 </CardItem>
                 <CardItem
                     translateZ="50"
-                    className="text-xl font-bold text-black dark:text-white"
+                    className="text-xl font-bold text-black dark:text-white first-letter:capitalize"
                 >
                     {note.title}
                 </CardItem>
                 <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-800 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                    className="text-gray-800 text-sm max-w-sm mt-2 dark:text-neutral-300 first-letter:capitalize"
                 >
                     {note.description}
                 </CardItem>
                 <CardItem
                     as="p"
                     translateZ="60"
-                    className="text-gray-800 text-sm max-w-sm mt-2 dark:text-neutral-300"
+                    className="text-gray-800 text-sm max-w-sm mt-2 dark:text-neutral-300 first-letter:capitalize"
                 >
                     {'Tags: '+note.tags}
                 </CardItem>
