@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Roboto_Mono as FontMono } from "next/font/google";
 import "./globals.css";
 
-const fontSans = FontSans({
+const fontMono = FontMono({
   subsets: ["latin"],
-  variable: "--font-sans",
-})
+  variable: "--font-mono",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+      <body className={cn("h-screen font-mono antialiased", fontMono.variable)}>
         {children}
       </body>
     </html>
