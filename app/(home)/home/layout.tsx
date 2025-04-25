@@ -3,19 +3,15 @@ import NavbarComponent from "@/components/custom/Navbar";
 import { HomeLayoutProps } from "@/lib/const/types";
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
-    return (
-        <div>
-            <nav>
-                <NavbarComponent />
-            </nav>
-            <main>
-                {children}
-            </main>
-            <footer>
-                <FooterComponent />
-            </footer>
-        </div>
-    )
-}
+  return (
+    <div className="grid grid-rows-[auto_80%_auto] w-full h-screen">
+      <NavbarComponent />
+      <main className="flex flex-col justify-center items-center">
+        {children}
+      </main>
+      <FooterComponent />
+    </div>
+  );
+};
 
 export default HomeLayout;
