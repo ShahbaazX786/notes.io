@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 const NavbarComponent = () => {
   return (
@@ -17,7 +19,10 @@ const NavbarComponent = () => {
           />
           <p className="text-2xl font-bold">otes.io</p>
         </Link>
-        <div>Search Bar</div>
+        <div className="flex w-full max-w-sm items-center space-x-2">
+          <Input type="search" placeholder="Search Notes..." />
+          <Button type="submit">Search</Button>
+        </div>
         <div>
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
