@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { IoIosAddCircle } from "react-icons/io";
+import AddNoteForm from "./AddNoteForm";
 
 const CreateNote = () => {
   return (
@@ -23,9 +23,9 @@ const CreateNote = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create New Note</DialogTitle>
-          <DialogDescription>Add note form here</DialogDescription>
+          <DialogTitle>New Note</DialogTitle>
         </DialogHeader>
+        <AddNoteForm />
       </DialogContent>
     </Dialog>
   );
