@@ -1,3 +1,5 @@
+"use client";
+
 import { globeConfig, globeSampleArcs } from "@/lib/const/constants";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
