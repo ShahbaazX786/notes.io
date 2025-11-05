@@ -1,3 +1,4 @@
+import TanStackQueryProvider from "@/lib/providers/tanstack";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Roboto_Mono as FontMono } from "next/font/google";
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("h-screen font-mono antialiased", fontMono.variable)}>
-        {children}
+        <TanStackQueryProvider>{children}</TanStackQueryProvider>
       </body>
     </html>
   );
