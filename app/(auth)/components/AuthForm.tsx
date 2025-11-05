@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,6 +14,7 @@ import { toast } from "@/components/ui/use-toast";
 import { LoginFormSchema, SignupFormSchema } from "@/lib/const/schema";
 import { AuthModeProps } from "@/lib/const/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -139,23 +141,23 @@ const AuthForm = ({ mode }: AuthModeProps) => {
             )}
           />
 
-          <button
+          <Button
             className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white mt-6"
             type="submit"
           >
             {mode === "login" ? "Login" : "Create Account"}
             <BottomGradient />
-          </button>
+          </Button>
         </form>
-
-        {/* <button
-          className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] mt-6"
-          type="submit"
-        >
-          {mode === "login" ? "Login" : "Create Account"}
-          <BottomGradient />
-        </button> */}
       </Form>
+
+      <Link href={mode === "login" ? "/signup" : "/login"}>
+        <p className="mt-2 hover:underline">
+          {mode === "login"
+            ? "Dont have an account?"
+            : "Already have an account?"}
+        </p>
+      </Link>
     </div>
   );
 };
