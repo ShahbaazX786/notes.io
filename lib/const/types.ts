@@ -1,14 +1,10 @@
-export type AuthLayoutProps = {
+export type ReactChildren = {
   children: React.ReactNode;
 };
 
-export type LandingLayoutProps = {
-  children: React.ReactNode;
-};
-
-export type HomeLayoutProps = {
-  children: React.ReactNode;
-};
+export interface AuthModeProps {
+  mode: "login" | "signup";
+}
 
 export interface FooterMenuItem {
   id: number;
@@ -27,9 +23,9 @@ export interface FooterSocialItem {
 
 export type FooterSocialTypes = FooterSocialItem[];
 
-export type NoteCardProps ={
-  note:Note;
-}
+export type NoteCardProps = {
+  note: Note;
+};
 
 export interface Note {
   _id: string;
@@ -38,4 +34,4 @@ export interface Note {
   tags?: string[];
   createdAt?: Date;
   updatedAt?: Date;
-};
+}
