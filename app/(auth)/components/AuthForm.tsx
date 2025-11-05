@@ -47,7 +47,7 @@ const AuthForm = ({ mode }: AuthModeProps) => {
   };
 
   return (
-    <div className="shadow-input mx-auto w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
+    <div className="shadow-input mx-auto w-full min-w-96 max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
       <h2 className="text-2xl font-bold text-neutral-800 dark:text-neutral-200 mb-4">
         {mode === "login" ? "Welcome Back!" : "Welcome to Notes.io"}
       </h2>
