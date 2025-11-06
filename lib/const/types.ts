@@ -35,3 +35,7 @@ export interface Note {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface FunctionProp {
+  toggle: React.Dispatch<React.SetStateAction<boolean>>;
+}
