@@ -8,10 +8,12 @@ import {
 } from "@/components/ui/dialog";
 import { IoIosAddCircle } from "react-icons/io";
 import AddNoteForm from "./AddNoteForm";
+import { useState } from "react";
 
 const CreateNote = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
           variant={"link"}
@@ -25,7 +27,7 @@ const CreateNote = () => {
         <DialogHeader>
           <DialogTitle>New Note</DialogTitle>
         </DialogHeader>
-        <AddNoteForm />
+        <AddNoteForm toggle={setIsOpen} />
       </DialogContent>
     </Dialog>
   );
