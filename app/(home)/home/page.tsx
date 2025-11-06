@@ -4,6 +4,7 @@ import useNotes from "@/lib/hooks/useNotes";
 import CreateNote from "./components/CreateNote";
 import HomeHeader from "./components/homeHeader";
 import NoteCard from "./components/NoteCard";
+import NoNotes from "./components/NoNotes";
 
 const HomeComponent = () => {
   const { notesQuery, deleteNoteMutation } = useNotes();
@@ -22,9 +23,13 @@ const HomeComponent = () => {
         <CreateNote />
       </div>
       <div className="flex justify-center items-start flex-wrap gap-6 w-[99%] mx-auto overflow-y-auto pb-10 pt-8">
-        {notesQuery.data?.data?.map((note: any) => (
-          <NoteCard key={note._id} note={note} onDelete={handleDelete} />
-        ))}
+        {notesQuery.data?.data.length > 0 ? (
+          notesQuery.data?.data?.map((note: any) => (
+            <NoteCard key={note._id} note={note} onDelete={handleDelete} />
+          ))
+        ) : (
+          <NoNotes />
+        )}
       </div>
     </div>
   );
