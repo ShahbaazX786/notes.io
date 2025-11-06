@@ -1,14 +1,4 @@
-import axios from "axios";
-
-const API = axios.create({
-  baseURL: "http://localhost:3200",
-});
-
-API.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
+import API from "./config";
 
 const signUpUser = async (data: any) => {
   const res = await API.post("/auth/signup", data);
@@ -20,4 +10,9 @@ const loginUser = async (data: any) => {
   return res.data;
 };
 
-export { loginUser, signUpUser };
+const logoutUser = async () => {
+  const res = await API.post("/auth/logout");
+  return res.data;
+};
+
+export { loginUser, logoutUser, signUpUser };
