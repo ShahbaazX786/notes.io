@@ -1,5 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import TanStackQueryProvider from "@/lib/providers/tanstack";
+import ThemeProvider from "@/lib/providers/theme";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Roboto_Mono as FontMono } from "next/font/google";
@@ -23,10 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("h-screen font-mono antialiased", fontMono.variable)}>
-        <TanStackQueryProvider>
-          {children}
-          <Toaster />
-        </TanStackQueryProvider>
+        <ThemeProvider>
+          <TanStackQueryProvider>
+            {children}
+            <Toaster />
+          </TanStackQueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
