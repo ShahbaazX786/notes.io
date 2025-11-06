@@ -11,39 +11,58 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
+import { loginUser, signUpUser } from "@/lib/api/auth";
 import { LoginFormSchema, SignupFormSchema } from "@/lib/const/schema";
 import { AuthModeProps } from "@/lib/const/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const AuthForm = ({ mode }: AuthModeProps) => {
-  const AuthFormSchema = mode === "login" ? LoginFormSchema : SignupFormSchema;
+  const AuthSchema = mode === "login" ? LoginFormSchema : SignupFormSchema;
+  const router = useRouter();
 
-  const authForm = useForm<z.infer<typeof AuthFormSchema>>({
-    resolver: zodResolver(AuthFormSchema),
-    defaultValues:
-      mode === "login"
-        ? { email: "", password: "" }
-        : {
-            firstName: "",
-            lastName: "",
-            email: "",
-            confirmEmail: "",
-            password: "",
-          },
+  const authForm = useForm<z.infer<typeof AuthSchema>>({
+    resolver: zodResolver(AuthSchema),
   });
 
-  const onFormSubmit = (data: z.infer<typeof AuthFormSchema>) => {
-    toast({
-      title: `${mode === "login" ? "Login" : "Signup"} form Submitted!`,
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  const mutation = useMutation({
+    mutationFn: (data: z.infer<typeof AuthSchema>) =>
+      mode === "login" ? loginUser(data) : signUpUser(data),
+    onSuccess: (res) => {
+      if (res?.success) {
+        toast({
+          title: `${
+            mode === "login" ? "Logged in" : "Signed up"
+          } successfully!`,
+          variant: "default",
+        });
+        if (res?.access_token) {
+          localStorage.setItem("token", res?.access_token);
+          router.push("/home");
+        }
+      } else {
+        toast({
+          title: "Error",
+          description: res?.message || "Something went wrong.",
+          variant: "destructive",
+        });
+      }
+    },
+    onError: (err: any) => {
+      toast({
+        title: "Error",
+        description: err.response?.data?.message || "Something went wrong.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const onFormSubmit = (data: z.infer<typeof AuthSchema>) => {
+    mutation.mutate(data);
   };
 
   return (
