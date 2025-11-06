@@ -1,7 +1,16 @@
-import { FaDev, FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
+import {
+  FaDev,
+  FaFacebook,
+  FaGithub,
+  FaInstagram,
+  FaUser,
+} from "react-icons/fa";
 import { FooterMenuTypes, FooterSocialTypes } from "./types";
 
 import { BsTwitterX } from "react-icons/bs";
+import { IoIosLogOut } from "react-icons/io";
+import { IoSettings } from "react-icons/io5";
+import { MdDashboard } from "react-icons/md";
 
 const FooterMenu: FooterMenuTypes = [
   {
@@ -596,12 +605,44 @@ const globeSampleArcs = [
   },
 ];
 
+export const linksu = [
+  {
+    label: "Dashboard",
+    href: "#",
+    icon: (
+      <MdDashboard className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+    ),
+  },
+  {
+    label: "Profile",
+    href: "#",
+    icon: (
+      <FaUser className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+    ),
+  },
+  {
+    label: "Settings",
+    href: "#",
+    icon: (
+      <IoSettings className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+    ),
+  },
+  {
+    label: "Logout",
+    href: "#",
+    icon: (
+      <IoIosLogOut className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+    ),
+  },
+];
+
 export default FooterMenu;
+
 export {
   FooterSocials,
-  Testimonials,
-  Notes,
-  globeConfig,
   globeColors,
+  globeConfig,
   globeSampleArcs,
+  Notes,
+  Testimonials,
 };
