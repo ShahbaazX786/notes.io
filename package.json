@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "z": "next dev",
+    "z": "cls && next dev",
     "b": "next build",
     "s": "next start",
     "l": "next lint"
@@ -20,6 +20,7 @@
     "@react-three/drei": "^9.107.0",
     "@react-three/fiber": "^8.16.8",
     "@tanstack/react-query": "^5.90.6",
+    "axios": "^1.13.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.10",
