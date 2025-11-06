@@ -4,6 +4,12 @@ const API = axios.create({
   baseURL: "http://localhost:3200",
 });
 
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
 const signUpUser = async (data: any) => {
   const res = await API.post("/auth/signup", data);
   return res.data;
