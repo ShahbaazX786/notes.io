@@ -24,7 +24,7 @@ const LandingNavbar = () => {
         </div>
       </Link>
       <div className="flex items-center gap-x-2">
-        <Link href={false ? "/home" : "/sign-up"}>
+        <Link href={false ? "/home" : "/signup"}>
           <Button variant={"premium"} className="rounded-full font-semibold">
             {false ? "Notes" : "Get Started"}
           </Button>
