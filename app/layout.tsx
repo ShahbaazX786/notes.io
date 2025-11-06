@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/toaster";
 import TanStackQueryProvider from "@/lib/providers/tanstack";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("h-screen font-mono antialiased", fontMono.variable)}>
-        <TanStackQueryProvider>{children}</TanStackQueryProvider>
+        <TanStackQueryProvider>
+          {children}
+          <Toaster />
+        </TanStackQueryProvider>
       </body>
     </html>
   );
