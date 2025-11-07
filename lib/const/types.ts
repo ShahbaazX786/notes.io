@@ -44,6 +44,8 @@ export interface FunctionProp {
 export type apiResponse = {
   success: boolean;
   message: string;
+  size?: number;
+  data?: object;
 };
 
 // Zustand store types.
