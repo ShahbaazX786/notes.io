@@ -637,11 +637,11 @@ export const linksu = [
 ];
 
 export const searcBarPlaceholders = [
-  "What's the first rule of Fight Club?",
-  "Who is Tyler Durden?",
-  "Where is Andrew Laeddis Hiding?",
-  "Write a Javascript method to reverse a string",
-  "How to assemble your own PC?",
+  "You already know how search works",
+  "Search for completed notes",
+  "Search for pending notes",
+  "search for any date",
+  "search for important tags",
 ];
 
 export default FooterMenu;
