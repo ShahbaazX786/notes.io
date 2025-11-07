@@ -33,7 +33,7 @@ const CreateNote = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{editableNote ? "Edit Note" : "New Note"}</DialogTitle>
+          <DialogTitle>{editableNote ? "Update Note" : "New Note"}</DialogTitle>
         </DialogHeader>
         <AddNoteForm />
       </DialogContent>

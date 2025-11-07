@@ -18,7 +18,7 @@ const NoteCard = ({ note }: NoteCardProps) => {
           "absolute top-[2px] left-[2px] z-10 rounded-lg drop-shadow-lg px-1 capitalize text-sm cursor-default dark:shadow-white dark:shadow-sm",
           note.status === "completed"
             ? "bg-green-500 text-white font-bold"
-            : "bg-red-400 text-black font-bold"
+            : "bg-red-400 text-white font-bold"
         )}
       >
         <p>{note?.status}</p>
