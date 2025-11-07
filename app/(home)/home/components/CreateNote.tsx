@@ -20,7 +20,7 @@ const CreateNote = () => {
           size={"icon"}
           className="w-14 h-14 md:w-20 md:h-20 hover:rotate-180 hover:scale-110 transition-all ease-in-out duration-300 rounded-full"
         >
-          <IoIosAddCircle size={75} />
+          <IoIosAddCircle size={52} />
         </Button>
       </DialogTrigger>
       <DialogContent>
