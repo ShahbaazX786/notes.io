@@ -32,8 +32,8 @@ export interface Note {
   title: string;
   description: string;
   tags?: string[];
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: Date | string;
+  updatedAt: Date | string;
   status?: string;
 }
 
@@ -45,3 +45,12 @@ export type apiResponse = {
   success: boolean;
   message: string;
 };
+
+// Zustand store types.
+
+export interface NoteStore {
+  editableNote: Note | null;
+  setEditableNote: (note: Note | null) => void;
+  isModalOpen: boolean;
+  setIsModalOpen: (state: boolean) => void;
+}
