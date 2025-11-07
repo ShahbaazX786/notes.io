@@ -10,7 +10,7 @@ import TagInput from "./TagInput";
 
 const AddNoteForm = () => {
   const { createNoteMutation } = useNotes();
-  const { editableNote, setIsModalOpen } = useNoteStore();
+  const { editableNote, setIsModalOpen, setEditableNote } = useNoteStore();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -29,6 +29,7 @@ const AddNoteForm = () => {
         setDescription("");
         setTags([]);
         setIsModalOpen(false);
+        setEditableNote(null);
         goodToast("Note added sucessfully");
       },
       onError: (err: any) => {
