@@ -6,14 +6,13 @@ import { toast } from "@/components/ui/use-toast";
 import useNotes from "@/lib/hooks/useNotes";
 import { useState } from "react";
 import TagInput from "./TagInput";
-import { FunctionProp } from "@/lib/const/types";
 
-const AddNoteForm = ({ toggle }: FunctionProp) => {
+const AddNoteForm = () => {
   const { createNoteMutation } = useNotes();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<string[]>([]);
 
   const handleNote = async () => {
     if (!title.trim() || !description.trim()) {
@@ -31,7 +30,7 @@ const AddNoteForm = ({ toggle }: FunctionProp) => {
         setTitle("");
         setDescription("");
         setTags([]);
-        toggle(false);
+        // toggle(false);
         toast({
           title: "Note added successfully!",
           variant: "default",
@@ -49,6 +48,18 @@ const AddNoteForm = ({ toggle }: FunctionProp) => {
       },
     });
   };
+
+  // useEffect(() => {
+  //   if (note) {
+  //     setTitle(note.title);
+  //     setDescription(note.description);
+  //     setTags(note.tags || []);
+  //   } else {
+  //     setTitle("");
+  //     setDescription("");
+  //     setTags([]);
+  //   }
+  // }, [note]);
 
   return (
     <div className="flex flex-col justify-start items-center gap-4">
@@ -83,7 +94,7 @@ const AddNoteForm = ({ toggle }: FunctionProp) => {
         <TagInput tags={tags} setTags={setTags} />
       </div>
       <Button type="submit" className="w-full" onClick={handleNote}>
-        Add New Note
+        {true ? "Update Note" : "Add New Note"}
       </Button>
     </div>
   );

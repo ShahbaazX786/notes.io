@@ -1,17 +1,18 @@
 import CustomTooltip from "@/components/customShadcn/customTooltip";
 import { Button } from "@/components/ui/button";
 import apiStatus, { badToast } from "@/lib/api/api-status";
+import { NoteCardProps as NoteCardOptionProps } from "@/lib/const/types";
 import useNotes from "@/lib/hooks/useNotes";
 import { FaCheck } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 
-const NoteCardOptions = ({ uniqueId }: { uniqueId: string }) => {
+const NoteCardOptions = ({ note }: NoteCardOptionProps) => {
   const { updateNoteMutation, deleteNoteMutation } = useNotes();
 
   const handleDelete = () => {
-    deleteNoteMutation.mutate(uniqueId, {
+    deleteNoteMutation.mutate(note._id, {
       onSuccess: (res) => {
         apiStatus(res);
       },
@@ -25,23 +26,27 @@ const NoteCardOptions = ({ uniqueId }: { uniqueId: string }) => {
   };
 
   const handleUpdate = (status: string) => {
-    updateNoteMutation.mutate(
-      { id: uniqueId, payload: { status } },
-      {
-        onSuccess: (res) => {
-          apiStatus(res);
-        },
-        onError: (err: any) => {
-          badToast(
-            "Error Updating note",
-            err?.response?.data?.message ||
-              err?.message ||
-              "Something went wrong"
-          );
-          console.log(err?.response?.data?.message);
-        },
-      }
-    );
+    if (status && status.length > 0) {
+      updateNoteMutation.mutate(
+        { id: note._id, payload: { status } },
+        {
+          onSuccess: (res) => {
+            apiStatus(res);
+          },
+          onError: (err: any) => {
+            badToast(
+              "Error Updating note",
+              err?.response?.data?.message ||
+                err?.message ||
+                "Something went wrong"
+            );
+            console.log(err?.response?.data?.message);
+          },
+        }
+      );
+    } else {
+      // onEdit(note);
+    }
   };
 
   return (

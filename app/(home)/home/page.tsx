@@ -3,18 +3,15 @@
 import useNotes from "@/lib/hooks/useNotes";
 import CreateNote from "./components/CreateNote";
 import HomeHeader from "./components/homeHeader";
-import NoteCard from "./components/NoteCard";
 import NoNotes from "./components/NoNotes";
+import NoteCard from "./components/NoteCard";
+import { Note } from "@/lib/const/types";
 
 const HomeComponent = () => {
-  const { notesQuery, deleteNoteMutation } = useNotes();
+  const { notesQuery } = useNotes();
 
   if (notesQuery.isLoading) return <p>Loading...</p>;
   if (notesQuery.isError) return <p>Error fetching notes.</p>;
-
-  const handleDelete = (id: string) => {
-    deleteNoteMutation.mutate(id);
-  };
 
   return (
     <div className="w-full h-full flex justify-start items-start flex-col relative">
@@ -24,8 +21,8 @@ const HomeComponent = () => {
       </div>
       <div className="flex justify-center items-start flex-wrap gap-6 w-[99%] mx-auto overflow-y-auto pb-10 pt-8">
         {notesQuery.data?.data.length > 0 ? (
-          notesQuery.data?.data?.map((note: any) => (
-            <NoteCard key={note._id} note={note} onDelete={handleDelete} />
+          notesQuery.data?.data?.map((note: Note) => (
+            <NoteCard key={note._id} note={note} />
           ))
         ) : (
           <NoNotes />

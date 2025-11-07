@@ -8,26 +8,34 @@ import {
 } from "@/components/ui/dialog";
 import { IoIosAddCircle } from "react-icons/io";
 import AddNoteForm from "./AddNoteForm";
-import { useState } from "react";
+import { useNoteStore } from "@/lib/store/noteStore";
 
 const CreateNote = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isModalOpen, setIsModalOpen, editableNote, setEditableNote } =
+    useNoteStore();
+
+  const handleOpenChanges = (open: boolean) => {
+    if (!open) setEditableNote(null);
+    setIsModalOpen(open);
+  };
+
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isModalOpen} onOpenChange={(open) => handleOpenChanges(open)}>
       <DialogTrigger asChild>
         <Button
           variant={"link"}
           size={"icon"}
           className="w-14 h-14 md:w-20 md:h-20 hover:rotate-180 hover:scale-110 transition-all ease-in-out duration-300 rounded-full"
+          onClick={() => setIsModalOpen(true)}
         >
           <IoIosAddCircle size={52} />
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>New Note</DialogTitle>
+          <DialogTitle>{editableNote ? "Edit Note" : "New Note"}</DialogTitle>
         </DialogHeader>
-        <AddNoteForm toggle={setIsOpen} />
+        <AddNoteForm />
       </DialogContent>
     </Dialog>
   );
