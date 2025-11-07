@@ -1,6 +1,6 @@
 import CustomTooltip from "@/components/customShadcn/customTooltip";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
+import apiStatus, { badToast } from "@/lib/api/api-status";
 import useNotes from "@/lib/hooks/useNotes";
 import { FaCheck } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
@@ -9,40 +9,28 @@ import { MdDeleteForever } from "react-icons/md";
 
 const NoteCardOptions = ({ uniqueId }: any) => {
   const { updateNoteMutation, deleteNoteMutation } = useNotes();
+
   const handleDelete = () => {
     deleteNoteMutation.mutate(uniqueId, {
-      onSuccess: () => {
-        toast({
-          title: "Note deleted successfully!",
-          variant: "default",
-        });
+      onSuccess: (res) => {
+        apiStatus(res);
       },
       onError: (err: any) => {
-        toast({
-          title: "Error deleting note",
-          description:
-            err?.response?.data?.message ||
-            err?.message ||
-            "Something went wrong",
-          variant: "destructive",
-        });
+        badToast(
+          "Error deleting note",
+          err?.response?.data?.message || err?.message || "Something went wrong"
+        );
       },
     });
   };
 
   const handleUpdate = () => {
     updateNoteMutation.mutate(uniqueId, {
-      onSuccess: () => {
-        toast({
-          title: "Note marked as complete ✅",
-          variant: "default",
-        });
+      onSuccess: (res) => {
+        apiStatus(res);
       },
       onError: () => {
-        toast({
-          title: "Failed to mark note as complete ❌",
-          variant: "destructive",
-        });
+        badToast("Failed to mark note as complete ❌");
       },
     });
   };
