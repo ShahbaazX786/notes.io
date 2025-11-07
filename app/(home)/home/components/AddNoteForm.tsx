@@ -74,7 +74,7 @@ const AddNoteForm = ({ toggle }: FunctionProp) => {
         <Textarea
           placeholder="Enter any Valid Message"
           id="NoteContent"
-          rows={10}
+          rows={5}
           value={description}
           onChange={({ target }) => setDescription(target.value)}
         />
