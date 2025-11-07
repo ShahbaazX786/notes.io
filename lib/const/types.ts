@@ -34,6 +34,7 @@ export interface Note {
   tags?: string[];
   createdAt?: Date;
   updatedAt?: Date;
+  status?: string;
 }
 
 export interface FunctionProp {
