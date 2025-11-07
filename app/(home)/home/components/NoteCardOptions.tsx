@@ -7,7 +7,7 @@ import { FiEdit } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 
-const NoteCardOptions = ({ uniqueId }: any) => {
+const NoteCardOptions = ({ uniqueId }: { uniqueId: string }) => {
   const { updateNoteMutation, deleteNoteMutation } = useNotes();
 
   const handleDelete = () => {
@@ -24,15 +24,24 @@ const NoteCardOptions = ({ uniqueId }: any) => {
     });
   };
 
-  const handleUpdate = () => {
-    updateNoteMutation.mutate(uniqueId, {
-      onSuccess: (res) => {
-        apiStatus(res);
-      },
-      onError: () => {
-        badToast("Failed to mark note as complete ❌");
-      },
-    });
+  const handleUpdate = (status: string) => {
+    updateNoteMutation.mutate(
+      { id: uniqueId, payload: { status } },
+      {
+        onSuccess: (res) => {
+          apiStatus(res);
+        },
+        onError: (err: any) => {
+          badToast(
+            "Error Updating note",
+            err?.response?.data?.message ||
+              err?.message ||
+              "Something went wrong"
+          );
+          console.log(err?.response?.data?.message);
+        },
+      }
+    );
   };
 
   return (
@@ -55,7 +64,7 @@ const NoteCardOptions = ({ uniqueId }: any) => {
           delay={400}
           icon={
             <Button
-              onClick={handleUpdate}
+              onClick={() => handleUpdate("")}
               variant={"premium"}
               className="hover:scale-110 transition-all ease-linear"
             >
@@ -70,7 +79,7 @@ const NoteCardOptions = ({ uniqueId }: any) => {
           delay={400}
           icon={
             <Button
-              onClick={handleUpdate}
+              onClick={() => handleUpdate("completed")}
               variant={"outline"}
               className="hover:scale-110 transition-all ease-linear"
             >
@@ -83,7 +92,7 @@ const NoteCardOptions = ({ uniqueId }: any) => {
           delay={400}
           icon={
             <Button
-              onClick={handleUpdate}
+              onClick={() => handleUpdate("pending")}
               variant={"secondary"}
               className="hover:scale-110 transition-all ease-linear"
             >
