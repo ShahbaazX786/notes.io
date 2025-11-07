@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import apiStatus, { badToast } from "@/lib/api/api-status";
 import { NoteCardProps as NoteCardOptionProps } from "@/lib/const/types";
 import useNotes from "@/lib/hooks/useNotes";
+import { useNoteStore } from "@/lib/store/noteStore";
 import { FaCheck } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
@@ -10,6 +11,7 @@ import { MdDeleteForever } from "react-icons/md";
 
 const NoteCardOptions = ({ note }: NoteCardOptionProps) => {
   const { updateNoteMutation, deleteNoteMutation } = useNotes();
+  const { setIsModalOpen, setEditableNote } = useNoteStore();
 
   const handleDelete = () => {
     deleteNoteMutation.mutate(note._id, {
@@ -45,7 +47,8 @@ const NoteCardOptions = ({ note }: NoteCardOptionProps) => {
         }
       );
     } else {
-      // onEdit(note);
+      setIsModalOpen(true);
+      setEditableNote(note);
     }
   };
 
