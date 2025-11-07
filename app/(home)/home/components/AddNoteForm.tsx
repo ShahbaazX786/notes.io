@@ -2,14 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { badToast, goodToast } from "@/lib/api/api-status";
+import apiStatus, { badToast } from "@/lib/api/api-status";
 import useNotes from "@/lib/hooks/useNotes";
 import { useNoteStore } from "@/lib/store/noteStore";
 import { useEffect, useState } from "react";
 import TagInput from "./TagInput";
+import { apiResponse } from "@/lib/const/types";
 
 const AddNoteForm = () => {
-  const { createNoteMutation } = useNotes();
+  const { createNoteMutation, updateNoteMutation } = useNotes();
   const { editableNote, setIsModalOpen, setEditableNote } = useNoteStore();
 
   const [title, setTitle] = useState("");
@@ -23,25 +24,48 @@ const AddNoteForm = () => {
 
     const noteData = { title, description, tags };
 
-    createNoteMutation.mutate(noteData, {
-      onSuccess: () => {
-        setTitle("");
-        setDescription("");
-        setTags([]);
-        setIsModalOpen(false);
-        setEditableNote(null);
-        goodToast("Note added sucessfully");
-      },
-      onError: (err: any) => {
-        console.error("Error creating note:", err);
-        badToast(
-          err?.response?.data?.error,
-          Array.isArray(err?.response?.data?.message)
-            ? err?.response?.data?.message.join(", ")
-            : err?.message
-        );
-      },
-    });
+    if (editableNote) {
+      updateNoteMutation.mutate(
+        { id: editableNote._id, payload: noteData },
+        {
+          onSuccess: (res: apiResponse) => {
+            apiStatus(res);
+            setTitle("");
+            setDescription("");
+            setTags([]);
+            setIsModalOpen(false);
+            setEditableNote(null);
+          },
+          onError: (err: any) => {
+            console.error("Error updating note:", err);
+            badToast(
+              "Update failed",
+              err?.response?.data?.message || err?.message
+            );
+          },
+        }
+      );
+    } else {
+      createNoteMutation.mutate(noteData, {
+        onSuccess: (res: apiResponse) => {
+          apiStatus(res);
+          setTitle("");
+          setDescription("");
+          setTags([]);
+          setIsModalOpen(false);
+          setEditableNote(null);
+        },
+        onError: (err: any) => {
+          console.error("Error creating note:", err);
+          badToast(
+            err?.response?.data?.error,
+            Array.isArray(err?.response?.data?.message)
+              ? err?.response?.data?.message.join(", ")
+              : err?.message
+          );
+        },
+      });
+    }
   };
 
   useEffect(() => {
