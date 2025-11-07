@@ -12,8 +12,8 @@ const createNote = async (data: any) => {
   const res = await API.post("/notes", data);
   return res.data;
 };
-const updateNote = async (id: string) => {
-  const res = await API.put(`/notes/${id}`);
+const updateNote = async (id: string, payload?: any) => {
+  const res = await API.put(`/notes/${id}`, payload);
   return res.data;
 };
 const deleteNote = async (id: string) => {
