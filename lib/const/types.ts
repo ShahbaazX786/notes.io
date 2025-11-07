@@ -39,3 +39,8 @@ export interface Note {
 export interface FunctionProp {
   toggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export type apiResponse = {
+  success: boolean;
+  message: string;
+};
