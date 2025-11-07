@@ -20,7 +20,8 @@ const useNotes = () => {
   });
 
   const updateNoteMutation = useMutation({
-    mutationFn: updateNote,
+    mutationFn: ({ id, payload }: { id: string; payload?: any }) =>
+      updateNote(id, payload),
     onSuccess: () => queryClient.invalidateQueries(["notes"]),
   });
 
