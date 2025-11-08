@@ -12,7 +12,10 @@ import { cn, formatDate, formatTime } from "@/lib/utils";
 
 const NoteCard = ({ note }: NoteCardProps) => {
   return (
-    <CardContainer className="inter-var flex flex-row justify-center items-center drop-shadow-lg relative group w-full h-full">
+    <CardContainer
+      tabIndex={0}
+      className="inter-var flex flex-row justify-center items-center drop-shadow-lg relative group w-full h-full"
+    >
       <div
         className={cn(
           "absolute top-[2px] left-[2px] z-10 rounded-lg drop-shadow-lg px-1 capitalize text-sm cursor-default dark:shadow-white dark:shadow-sm",
@@ -58,7 +61,7 @@ const NoteCard = ({ note }: NoteCardProps) => {
           {"Tags: " + note.tags}
         </CardItem>
       </CardBody>
-      <div className="absolute top-0 right-0  h-full group-hover:flex hidden group-hover:transition-all group-hover:ease-linear group-hover:duration-500 group-hover:delay-150">
+      <div className="absolute top-0 right-0 h-full group-hover:flex group-focus-within:flex hidden group-hover:transition-all group-hover:ease-linear group-hover:duration-500 group-hover:delay-150">
         <NoteCardOptions note={note} />
       </div>
     </CardContainer>
