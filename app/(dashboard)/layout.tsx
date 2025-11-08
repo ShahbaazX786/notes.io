@@ -1,14 +1,11 @@
 import { ReactChildren } from "@/lib/const/types";
-import {
-  Sidebar,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import DashboardSideBar from "./components/sideBar";
 const HomeLayout = ({ children }: ReactChildren) => {
   return (
     <div className="flex flex-col justify-center items-center w-full h-full relative">
       <SidebarProvider>
-        <Sidebar />
+        <DashboardSideBar />
         <main>
           <SidebarTrigger />
           {children}
