@@ -9,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarRail,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import Link from "next/link";
@@ -82,6 +83,7 @@ const DashboardSideBar = () => {
       </SidebarContent>
       <Separator />
       <SidebarFooter></SidebarFooter>
+      <SidebarRail />
     </Sidebar>
   );
 };
