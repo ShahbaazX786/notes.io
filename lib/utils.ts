@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Note } from "./const/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -26,4 +27,9 @@ const formatTime = (timeString: string | Date) => {
     .toLowerCase();
 };
 
-export { formatDate, formatTime };
+const getCompletedNotes = (notes: Note[]) => {
+  return notes.filter((n) => n.status === "completed");
+};
+
+export { formatDate, formatTime }; // General Utility functions.
+export { getCompletedNotes }; // Notes filtering Utility functions.
