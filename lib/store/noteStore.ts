@@ -7,6 +7,9 @@ const useNoteStore = create<NoteStore>((set) => ({
 
   isModalOpen: false,
   setIsModalOpen: (state) => set({ isModalOpen: state }),
+
+  notes: [],
+  setNotes: (notes) => set({ notes }),
 }));
 
 export { useNoteStore };

@@ -55,4 +55,7 @@ export interface NoteStore {
   setEditableNote: (note: Note | null) => void;
   isModalOpen: boolean;
   setIsModalOpen: (state: boolean) => void;
+
+  notes: Note[];
+  setNotes: (notes: Note[]) => void;
 }
