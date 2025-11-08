@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Montserrat } from "next/font/google";
 import Link from "next/link";
+import ThemeToggler from "./ThemeToggler";
 
 const font = Montserrat({
   weight: "600",
@@ -29,6 +30,7 @@ const LandingNavbar = () => {
             {false ? "Notes" : "Get Started"}
           </Button>
         </Link>
+        <ThemeToggler />
       </div>
     </div>
   );
