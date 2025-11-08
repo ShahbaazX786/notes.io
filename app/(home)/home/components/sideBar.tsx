@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { ReactChildren } from "@/lib/const/types";
+import Link from "next/link";
 
 const SideBar = ({ children }: ReactChildren) => {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,7 @@ const SideBar = ({ children }: ReactChildren) => {
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
+        <SidebarBody className="justify-between gap-10 bg-gradient-to-bl from-green-200 to-green-400 font-bold text-lg">
           <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
             {open ? <Logo /> : <LogoIcon />}
             <div className="mt-8 flex flex-col gap-2">
@@ -30,11 +31,11 @@ const SideBar = ({ children }: ReactChildren) => {
           <div>
             <SidebarLink
               link={{
-                label: "Manu Arora",
+                label: "User Name",
                 href: "#",
                 icon: (
                   <Image
-                    src="https://assets.aceternity.com"
+                    src={"/Logo.png"}
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}
                     height={50}
@@ -55,7 +56,7 @@ export default SideBar;
 
 export const Logo = () => {
   return (
-    <a
+    <Link
       href="#"
       className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
     >
@@ -65,9 +66,9 @@ export const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium whitespace-pre text-black dark:text-white"
       >
-        Acet Labs
+        Notes.io
       </motion.span>
-    </a>
+    </Link>
   );
 };
 export const LogoIcon = () => {
