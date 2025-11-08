@@ -42,7 +42,7 @@ const AuthForm = ({ mode }: AuthModeProps) => {
         });
         if (res?.access_token) {
           localStorage.setItem("token", res?.access_token);
-          router.push("/home");
+          router.push("/dashboard");
         }
       } else {
         toast({
