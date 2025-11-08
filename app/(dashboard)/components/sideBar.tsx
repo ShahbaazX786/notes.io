@@ -16,6 +16,7 @@ import {
   MdArchive,
   MdCalendarToday,
   MdDashboard,
+  MdNote,
   MdSettings,
 } from "react-icons/md";
 
@@ -25,6 +26,11 @@ const DashboardSideBar = () => {
       title: "Dashboard",
       url: "/dashboard",
       icon: <MdDashboard />,
+    },
+    {
+      title: "Notes",
+      url: "/notes",
+      icon: <MdNote />,
     },
     {
       title: "Archive",
