@@ -7,7 +7,7 @@ import NoNotes from "./components/NoNotes";
 import NoteCard from "./components/NoteCard";
 import { Note } from "@/lib/const/types";
 
-const HomeComponent = () => {
+const HomePage = () => {
   const { notesQuery } = useNotes();
 
   if (notesQuery.isLoading) return <p>Loading...</p>;
@@ -32,4 +32,4 @@ const HomeComponent = () => {
   );
 };
 
-export default HomeComponent;
+export default HomePage;
