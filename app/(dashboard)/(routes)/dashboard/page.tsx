@@ -1,11 +1,11 @@
 "use client";
 
 import useNotes from "@/lib/hooks/useNotes";
-import CreateNote from "./components/CreateNote";
-import HomeHeader from "./components/homeHeader";
-import NoNotes from "./components/NoNotes";
-import NoteCard from "./components/NoteCard";
 import { Note } from "@/lib/const/types";
+import HomeHeader from "../../components/homeHeader";
+import CreateNote from "../../components/CreateNote";
+import NoteCard from "../../components/NoteCard";
+import NoNotes from "../../components/NoNotes";
 
 const HomePage = () => {
   const { notesQuery } = useNotes();
