@@ -1,3 +1,5 @@
+// Hook to use zustand mutations to execute api calls.
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createNote, deleteNote, fetchAllNotes, updateNote } from "../api/note";
 
