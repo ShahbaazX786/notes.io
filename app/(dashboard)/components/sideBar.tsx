@@ -1,83 +1,83 @@
-"use client";
-import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import { useState } from "react";
-
-import { linksu } from "@/lib/const/constants";
-import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { Separator } from "@/components/ui/separator";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
 import Image from "next/image";
-import { ReactChildren } from "@/lib/const/types";
 import Link from "next/link";
+import {
+  MdArchive,
+  MdCalendarToday,
+  MdDashboard,
+  MdSettings,
+} from "react-icons/md";
 
-const SideBar = ({ children }: ReactChildren) => {
-  const [open, setOpen] = useState(false);
+const DashboardSideBar = () => {
+  const items = [
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: <MdDashboard />,
+    },
+    {
+      title: "Archive",
+      url: "/archive",
+      icon: <MdArchive />,
+    },
+    {
+      title: "Calendar",
+      url: "/calender",
+      icon: <MdCalendarToday />,
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: <MdSettings />,
+    },
+  ];
+
   return (
-    <div
-      className={cn(
-        "flex w-full flex-1 flex-col overflow-hidden rounded-md border border-neutral-200 bg-gray-100 md:flex-row dark:border-neutral-700 dark:bg-neutral-800",
-        "h-screen"
-      )}
-    >
-      <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10 bg-gradient-to-bl from-green-200 to-green-400 font-bold text-lg">
-          <div className="flex flex-1 flex-col overflow-x-hidden overflow-y-auto">
-            {open ? <Logo /> : <LogoIcon />}
-            <div className="mt-8 flex flex-col gap-2">
-              {linksu.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
+    <Sidebar collapsible="icon">
+      <SidebarHeader className="flex justify-center items-center py-2">
+        <Image
+          src={"/Logo.png"}
+          width={100}
+          height={100}
+          alt="Notes.io Logo"
+          className="w-12 h-12 shadow-lg rounded-full"
+        />
+        <p className="text-sm md:text-lg font-bold">Notes.io</p>
+      </SidebarHeader>
+      <Separator />
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               ))}
-            </div>
-          </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: "User Name",
-                href: "#",
-                icon: (
-                  <Image
-                    src={"/Logo.png"}
-                    className="h-7 w-7 shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar"
-                  />
-                ),
-              }}
-            />
-          </div>
-        </SidebarBody>
-      </Sidebar>
-      {children}
-    </div>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <Separator />
+      <SidebarFooter></SidebarFooter>
+    </Sidebar>
   );
 };
 
-export default SideBar;
-
-export const Logo = () => {
-  return (
-    <Link
-      href="#"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
-    >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="font-medium whitespace-pre text-black dark:text-white"
-      >
-        Notes.io
-      </motion.span>
-    </Link>
-  );
-};
-export const LogoIcon = () => {
-  return (
-    <a
-      href="#"
-      className="relative z-20 flex items-center space-x-2 py-1 text-sm font-normal text-black"
-    >
-      <div className="h-5 w-6 shrink-0 rounded-tl-lg rounded-tr-sm rounded-br-lg rounded-bl-sm bg-black dark:bg-white" />
-    </a>
-  );
-};
+export default DashboardSideBar;
