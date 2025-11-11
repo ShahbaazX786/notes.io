@@ -6,9 +6,9 @@ import {
   CardItem,
 } from "@/components/aceternity/3d_card";
 import { NoteCardProps } from "@/lib/const/types";
+import { cn, formatDate, formatTime } from "@/lib/utils";
 import { SlCalender } from "react-icons/sl";
 import NoteCardOptions from "./NoteCardOptions";
-import { cn, formatDate, formatTime } from "@/lib/utils";
 
 const NoteCard = ({ note }: NoteCardProps) => {
   return (
@@ -18,13 +18,12 @@ const NoteCard = ({ note }: NoteCardProps) => {
     >
       <div
         className={cn(
-          "absolute top-[2px] left-[2px] z-10 rounded-lg drop-shadow-lg px-1 capitalize text-sm cursor-default dark:shadow-white dark:shadow-sm",
-          note.status === "completed"
-            ? "bg-green-500 text-white font-bold"
-            : "bg-red-400 text-white font-bold"
+          "absolute top-[2px] left-[2px] z-10 rounded-lg bg-yellow-500 font-bold text-white drop-shadow-lg px-1 capitalize text-sm cursor-default dark:shadow-white dark:shadow-sm",
+          note.status === "completed" && "bg-green-500 ",
+          note.status === "pending" && "bg-red-400 "
         )}
       >
-        <p>{note?.status}</p>
+        <p>{note?.status || "New"}</p>
       </div>
       <CardBody className="bg-gray-50 relative group/card h-auto dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] rounded-xl p-8 border max-h-40">
         <CardItem
