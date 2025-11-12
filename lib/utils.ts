@@ -1,6 +1,6 @@
+import { Note } from "@/lib/const/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Note } from "./const/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -27,9 +27,58 @@ const formatTime = (timeString: string | Date) => {
     .toLowerCase();
 };
 
-const getCompletedNotes = (notes: Note[]) => {
-  return notes.filter((n) => n.status === "completed");
+const filterNotesByStatus = (notes: Note[]) => {
+  let completedNotes: Note[] = [];
+  let pendingNotes: Note[] = [];
+  let newNotes: Note[] = [];
+  notes.forEach((note: Note) => {
+    switch (note?.status) {
+      case "completed":
+        completedNotes = [...completedNotes, note];
+        break;
+      case "pending":
+        pendingNotes = [...pendingNotes, note];
+        break;
+      default:
+        newNotes = [...newNotes, note];
+        break;
+    }
+  });
+
+  const noteMetrics = getNoteMetrics(
+    notes.length,
+    completedNotes.length,
+    pendingNotes.length,
+    newNotes.length
+  );
+
+  return { noteMetrics, completedNotes, pendingNotes, newNotes };
+};
+
+const getNoteMetrics = (
+  total: number,
+  completed: number,
+  pending: number,
+  latest: number
+) => {
+  let noteMetrics = {
+    totalNotes: 0,
+    completionRate: 0,
+    pendingRate: 0,
+    newRate: 0,
+  };
+
+  noteMetrics.totalNotes = total;
+  noteMetrics.completionRate = calculatePercentage(completed, total);
+  noteMetrics.pendingRate = calculatePercentage(latest, total);
+  noteMetrics.newRate = calculatePercentage(pending, total);
+
+  return noteMetrics;
+};
+
+const calculatePercentage = (current: number, total: number) => {
+  return Number(Math.floor((current / total) * 100).toFixed(2));
 };
 
 export { formatDate, formatTime }; // General Utility functions.
-export { getCompletedNotes }; // Notes filtering Utility functions.
+export { filterNotesByStatus }; // Notes filtering Utility functions.

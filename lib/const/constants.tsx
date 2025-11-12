@@ -11,6 +11,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 import { IoSettings } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
+import { type ChartConfig } from "@/components/ui/chart";
 
 const FooterMenu: FooterMenuTypes = [
   {
@@ -644,6 +645,24 @@ export const searcBarPlaceholders = [
   "search for important tags",
 ];
 
+const chartConfig = {
+  CONFIG: {
+    desktop: {
+      label: "Desktop",
+      color: "#2563eb",
+    },
+    mobile: {
+      label: "Mobile",
+      color: "#60a5fa",
+    },
+  } satisfies ChartConfig,
+  COLORS: ["#00C49F", "#FF8042", "#FFBB28"],
+  VARIANT: {
+    PIE: "pie",
+    BAR: "bar",
+  },
+};
+
 export default FooterMenu;
 
 export {
@@ -653,4 +672,5 @@ export {
   globeSampleArcs,
   Notes,
   Testimonials,
+  chartConfig,
 };
