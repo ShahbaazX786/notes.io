@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart";
+import { Note } from "@/lib/const/types";
 
 const CustomChart = ({ variant, data }: { variant: string; data: any }) => {
   return (
@@ -26,13 +27,35 @@ export const CustomBarChart = ({ data }: { data: any }) => {
   return (
     <ChartContainer
       config={chartConfig.CONFIG}
-      className={"min-h-64 w-full h-full"}
+      className="min-h-64 w-full h-full"
     >
-      <BarChart width={250} height={200} data={data}>
-        <XAxis dataKey="name" />
-        <YAxis allowDecimals={false} />
+      <BarChart width={300} height={250} data={data}>
+        <XAxis
+          dataKey="name"
+          label={{
+            value: "Tags",
+            position: "insideBottom",
+            offset: -2,
+          }}
+        />
+        <YAxis
+          allowDecimals={false}
+          label={{
+            value: "Notes",
+            position: "outsideLeft",
+            angle: -90,
+            offset: -5,
+          }}
+        />
         <ChartTooltip content={<ChartTooltipContent indicator="line" />} />
-        <Bar dataKey="value" fill="#8884d8" radius={[6, 6, 0, 0]} />
+        <Bar dataKey="value" radius={[6, 6, 0, 0]}>
+          {data.map((_item: Note, index: number) => (
+            <Cell
+              key={`cell-${index}`}
+              fill={chartConfig.COLORS[index % chartConfig.COLORS.length]}
+            />
+          ))}
+        </Bar>
       </BarChart>
     </ChartContainer>
   );
