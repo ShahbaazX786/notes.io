@@ -80,5 +80,25 @@ const calculatePercentage = (current: number, total: number) => {
   return Number(Math.floor((current / total) * 100).toFixed(2));
 };
 
+const getNotesCreatedByDate = (notes: Note[]) => {
+  const filteredNotesByDate = notes.reduce((acc: any, note: Note) => {
+    const date = new Date(note.createdAt).toLocaleDateString("en-US", {
+      day: "2-digit",
+      month: "short",
+    });
+    acc[date] = (acc[date] || 0) + 1;
+    return acc;
+  }, {});
+
+  const chartData = Object.entries(filteredNotesByDate).map(
+    ([date, count]) => ({
+      name: date,
+      value: count,
+    })
+  );
+
+  return chartData;
+};
+
 export { formatDate, formatTime }; // General Utility functions.
-export { filterNotesByStatus }; // Notes filtering Utility functions.
+export { filterNotesByStatus, getNotesCreatedByDate }; // Notes filtering Utility functions.
