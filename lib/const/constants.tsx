@@ -660,6 +660,7 @@ const chartConfig = {
   VARIANT: {
     PIE: "pie",
     BAR: "bar",
+    LINE: "line",
   },
 };
 
