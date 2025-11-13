@@ -100,5 +100,17 @@ const getNotesCreatedByDate = (notes: Note[]) => {
   return chartData;
 };
 
+const getTagFrequency = (notes: Note[]) => {
+  const tagCount: Record<string, number> = {};
+
+  notes.forEach((note: Note) => {
+    note?.tags?.forEach((tag: string) => {
+      tagCount[tag] = (tagCount[tag] || 0) + 1;
+    });
+  });
+
+  return Object.entries(tagCount).map(([name, value]) => ({ name, value }));
+};
+
 export { formatDate, formatTime }; // General Utility functions.
-export { filterNotesByStatus, getNotesCreatedByDate }; // Notes filtering Utility functions.
+export { filterNotesByStatus, getNotesCreatedByDate, getTagFrequency }; // Notes filtering Utility functions.
