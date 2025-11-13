@@ -8,11 +8,12 @@ import {
   getNotesCreatedByDate,
   getTagFrequency,
 } from "@/lib/utils";
-import React from "react";
+import DashboardInfoCard from "../../components/dashboardInfoCard";
 
 const DashboardPage = () => {
   const { notes } = useNoteStore();
-  const { completedNotes, pendingNotes, newNotes } = filterNotesByStatus(notes);
+  const { completedNotes, pendingNotes, newNotes, noteMetrics } =
+    filterNotesByStatus(notes);
 
   const pieData = [
     { name: "Completed", value: completedNotes.length },
@@ -25,6 +26,32 @@ const DashboardPage = () => {
 
   return (
     <>
+      <section className="w-full flex flex-col justify-between items-center p-6">
+        <h1 className="text-3xl font-bold my-4">
+          A Quick Glance over note metrics{" "}
+        </h1>
+        <div className="w-full h-full flex justify-center items-center gap-6  ">
+          <DashboardInfoCard
+            title={"Completed Notes"}
+            icon={"/images/done.svg"}
+            metric1={completedNotes.length}
+            metric2={noteMetrics.totalNotes}
+          />
+          <DashboardInfoCard
+            title={"Pending Notes"}
+            icon={"/images/pending.svg"}
+            metric1={pendingNotes.length}
+            metric2={noteMetrics.totalNotes}
+          />
+          <DashboardInfoCard
+            title={"New Notes"}
+            icon={"/images/new.svg"}
+            metric1={newNotes.length}
+            metric2={noteMetrics.totalNotes}
+          />
+        </div>
+      </section>
+
       <section className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
         <section className="w-full h-fit relative flex flex-col justify-start items-center border rounded-lg hover:shadow-lg py-4 gap-8">
           <h2 className="text-center font-bold">Completion Status</h2>
