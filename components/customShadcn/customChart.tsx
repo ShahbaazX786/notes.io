@@ -24,7 +24,10 @@ const CustomChart = ({ variant, data }: { variant: string; data: any }) => {
 
 export const CustomBarChart = ({ data }: { data: any }) => {
   return (
-    <ChartContainer config={chartConfig.CONFIG} className={"border, min-h-52"}>
+    <ChartContainer
+      config={chartConfig.CONFIG}
+      className={"min-h-64 w-full h-full"}
+    >
       <BarChart width={250} height={200} data={data}>
         <XAxis dataKey="name" />
         <YAxis allowDecimals={false} />
@@ -37,7 +40,10 @@ export const CustomBarChart = ({ data }: { data: any }) => {
 
 export const CustomLineChart = ({ data }: { data: any }) => {
   return (
-    <ChartContainer config={chartConfig.CONFIG} className={"border, min-h-52"}>
+    <ChartContainer
+      config={chartConfig.CONFIG}
+      className={"min-h-64 w-full h-full"}
+    >
       <LineChart width={250} height={200} data={data}>
         <XAxis
           dataKey="name"
@@ -60,16 +66,22 @@ export const CustomLineChart = ({ data }: { data: any }) => {
 
 export const CustomPieChart = ({ data }: { data: any }) => {
   return (
-    <ChartContainer config={chartConfig.CONFIG} className={"border, min-h-52"}>
-      <PieChart width={250} height={200}>
+    <ChartContainer
+      config={chartConfig.CONFIG}
+      className={"min-h-64 w-full h-full"}
+    >
+      <PieChart
+        width={250}
+        height={200}
+        className="w-full max-w-[500px] max-h-[80vh] aspect-square"
+      >
         <Pie
           data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={true}
-          outerRadius={80}
-          label={(item) => `${item.name}: ${item.value}`}
+          innerRadius={50}
+          outerRadius={70}
+          cornerRadius={50}
           dataKey="value"
+          paddingAngle={5}
         >
           {data.map((_item: any, index: number) => (
             <Cell
