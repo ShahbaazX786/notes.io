@@ -53,7 +53,7 @@ const DashboardPage = () => {
       </section>
 
       <section className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
-        <section className="w-full h-fit relative flex flex-col justify-start items-center border rounded-lg hover:shadow-lg py-4 gap-8">
+        <section className="w-full h-fit relative flex flex-col justify-start items-center border rounded-lg shadow-md hover:shadow-xl py-4 gap-8">
           <h2 className="text-center font-bold">Completion Status</h2>
           <CustomChart variant="pie" data={pieData} />
           <div className="absolute bottom-4 left-2 flex flex-col flex-wrap justify-center text-xs">
@@ -74,12 +74,12 @@ const DashboardPage = () => {
           </div>
         </section>
 
-        <section className="w-full h-fit flex flex-col justify-start items-center gap-8 border rounded-lg hover:shadow-lg py-4">
+        <section className="w-full h-fit flex flex-col justify-start items-center gap-8 border rounded-lg shadow-md hover:shadow-xl py-4">
           <h2 className="text-center font-bold">Notes Trend</h2>
           <CustomChart variant="line" data={lineChartData} />
         </section>
 
-        <section className="w-full h-fit flex flex-col justify-start items-center gap-8 border rounded-lg hover:shadow-lg py-4">
+        <section className="w-full h-fit flex flex-col justify-start items-center gap-8 border rounded-lg shadow-md hover:shadow-xl py-4">
           <h2 className="text-center font-bold">Popular Tags</h2>
           <CustomChart variant="bar" data={barChartData} />
         </section>
