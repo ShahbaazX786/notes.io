@@ -13,7 +13,7 @@ const SideBarToggler = () => {
 
   return (
     <div className="flex md:hidden justify-end items-end">
-      <Button onClick={toggleSidebar} variant={"ghost"}>
+      <Button onClick={toggleSidebar} variant={"outline"}>
         {!openMobile ? (
           <MdOutlineMenu className="w-6 h-6" />
         ) : (
