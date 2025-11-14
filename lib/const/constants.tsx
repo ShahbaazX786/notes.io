@@ -664,6 +664,9 @@ const chartConfig = {
   },
 };
 
+export const INITIAL_COUNT = 15;
+export const LOAD_MORE_COUNT = 5;
+
 export default FooterMenu;
 
 export {
