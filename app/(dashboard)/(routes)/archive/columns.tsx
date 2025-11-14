@@ -2,6 +2,7 @@
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Note } from "@/lib/const/types";
+import { formatDate, formatTime } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 
 // This type is used to define the shape of our data.
@@ -43,9 +44,24 @@ export const columns: ColumnDef<Note>[] = [
   {
     accessorKey: "status",
     header: "Status",
+    cell: ({ row }) => {
+      const text = row.original.status;
+      return text ? (
+        <p>{text?.charAt(0).toUpperCase() + "" + text?.slice(1)}</p>
+      ) : (
+        ""
+      );
+    },
   },
   {
-    accessorKey: "dateAdded",
+    accessorKey: "createdAt",
     header: "Date Added",
+    cell: ({ row }) => (
+      <p>
+        {formatDate(row.original.createdAt) +
+          " " +
+          formatTime(row.original.createdAt).toUpperCase()}
+      </p>
+    ),
   },
 ];
