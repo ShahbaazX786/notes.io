@@ -37,15 +37,15 @@ export const columns: ColumnDef<Note>[] = [
   },
   {
     accessorKey: "title",
-    header: "Title",
+    header: ({ column }) => sortingFunc("Title", column),
   },
   {
     accessorKey: "description",
-    header: "Description",
+    header: ({ column }) => sortingFunc("Description", column),
   },
   {
     accessorKey: "status",
-    header: "Status",
+    header: ({ column }) => sortingFunc("Status", column),
     cell: ({ row }) => {
       const text = row.original.status;
       return text ? (
@@ -73,7 +73,7 @@ export const sortingFunc = (title: string, column: any) => {
     <div className="flex flex-row justify-start items-center group">
       <p>{title}</p>
       <Button
-        className="hidden group-hover:flex"
+        className="invisible group-hover:visible"
         variant="link"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
       >
