@@ -1,6 +1,7 @@
 import ThemeToggler from "@/components/custom/ThemeToggler";
 import SearchBar from "@/components/customShadcn/searchBar";
 import CreateNote from "./CreateNote";
+import SideBarToggler from "./sideBarToggler";
 
 const DashboardHeader = () => {
   return (
@@ -10,6 +11,7 @@ const DashboardHeader = () => {
       <div className="flex justify-center items-center gap-4">
         <CreateNote variant="other" />
         <ThemeToggler />
+        <SideBarToggler />
       </div>
     </header>
   );
