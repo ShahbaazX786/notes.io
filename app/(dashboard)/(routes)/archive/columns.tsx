@@ -1,9 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Note } from "@/lib/const/types";
 import { formatDate, formatTime } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
+import { FaSort } from "react-icons/fa";
 
 // This type is used to define the shape of our data.
 // I can use a Zod schema here if you want, but first lets make it simple then think about it later.
@@ -55,7 +57,7 @@ export const columns: ColumnDef<Note>[] = [
   },
   {
     accessorKey: "createdAt",
-    header: "Date Added",
+    header: ({ column }) => sortingFunc("Date Added", column),
     cell: ({ row }) => (
       <p>
         {formatDate(row.original.createdAt) +
@@ -65,3 +67,18 @@ export const columns: ColumnDef<Note>[] = [
     ),
   },
 ];
+
+export const sortingFunc = (title: string, column: any) => {
+  return (
+    <div className="flex flex-row justify-start items-center group">
+      <p>{title}</p>
+      <Button
+        className="hidden group-hover:flex"
+        variant="link"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        <FaSort className="ml-2 h-4 w-4" />
+      </Button>
+    </div>
+  );
+};
