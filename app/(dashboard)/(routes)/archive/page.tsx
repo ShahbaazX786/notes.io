@@ -1,7 +1,7 @@
 "use client";
+import { columns } from "@/components/customShadcn/data-table/columns";
+import { DataTable } from "@/components/customShadcn/data-table/data-table";
 import { useNoteStore } from "@/lib/store/noteStore";
-import { columns } from "./columns";
-import { DataTable } from "./data-table";
 import { getArchivedNotes } from "@/lib/utils";
 
 const ArchivePage = () => {
