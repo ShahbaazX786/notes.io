@@ -12,6 +12,14 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -21,24 +29,20 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { Input } from "@/components/ui/input";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  hideDropDown?: boolean;
+  hideSearchBar?: boolean;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  hideDropDown = false,
+  hideSearchBar = false,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([]); //for sorting
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({}); // for hiding
@@ -63,44 +67,54 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="overflow-hidden rounded-md border px-8 py-5">
-      <div className="flex flex-row justify-end items-end mb-4">
-        <div className="flex items-center">
-          <Input
-            placeholder="Search for any specific note..."
-            value={table.getState().globalFilter ?? ""}
-            onChange={(event) => table.setGlobalFilter(event.target.value)}
-            className="min-w-32 md:min-w-64 lg:min-w-80 text-ellipsis"
-          />
-        </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
-              <MdKeyboardArrowDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+    <div className="w-full h-full overflow-hidden rounded-md border px-8 py-5">
+      {/* Top of the Table */}
+      <div className="flex flex-row justify-between items-center mb-4">
+        {/* Filtering / Searching */}
+        {!hideSearchBar && (
+          <div className="flex items-center">
+            <Input
+              placeholder="Search for any specific note..."
+              value={table.getState().globalFilter ?? ""}
+              onChange={(event) => table.setGlobalFilter(event.target.value)}
+              className="min-w-32 md:min-w-64 lg:min-w-80 text-ellipsis"
+            />
+          </div>
+        )}
+
+        {/* Column Visibility */}
+        {!hideDropDown && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                Columns
+                <MdKeyboardArrowDown />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
+
+      {/* Main Table */}
       <Table className="border rounded-lg">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -143,6 +157,8 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
+
+      {/* Pagination Controls */}
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"
