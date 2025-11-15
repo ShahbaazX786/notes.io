@@ -62,15 +62,15 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="overflow-hidden rounded-md border px-8 py-5">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Search..."
-          value={table.getState().globalFilter ?? ""}
-          onChange={(event) => table.setGlobalFilter(event.target.value)}
-          className="max-w-sm"
-        />
-      </div>
       <div className="flex flex-row justify-end items-end mb-4">
+        <div className="flex items-center">
+          <Input
+            placeholder="Search for any specific note..."
+            value={table.getState().globalFilter ?? ""}
+            onChange={(event) => table.setGlobalFilter(event.target.value)}
+            className="min-w-32 md:min-w-64 lg:min-w-80 text-ellipsis"
+          />
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
