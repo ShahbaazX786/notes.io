@@ -9,6 +9,8 @@ import {
   getTagFrequency,
 } from "@/lib/utils";
 import DashboardInfoCard from "../../components/dashboardInfoCard";
+import { DataTable } from "@/components/customShadcn/data-table/data-table";
+import { columns } from "@/components/customShadcn/data-table/columns";
 
 const DashboardPage = () => {
   const { notes } = useNoteStore();
@@ -54,7 +56,7 @@ const DashboardPage = () => {
       </section>
 
       {/* info charts */}
-      <section className="w-full min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
+      <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
         <section className="w-full h-fit relative flex flex-col justify-start items-center border rounded-lg shadow-md hover:shadow-xl py-4 gap-8">
           <h2 className="text-center font-bold">Completion Status</h2>
           <CustomChart variant="pie" data={pieData} />
@@ -88,7 +90,10 @@ const DashboardPage = () => {
       </section>
 
       {/* latest notes table. */}
-      <section className="w-full flex flex-col justify-between items-center p-6"></section>
+      <section className="w-full flex flex-col justify-between items-start p-6 shadow-md hover:shadow-xl z-10">
+        <h2 className="text-lg font-bold">Recently Added Notes</h2>
+        <DataTable columns={columns} data={newNotes} hideDropDown={true} />
+      </section>
     </>
   );
 };
