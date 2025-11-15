@@ -112,5 +112,17 @@ const getTagFrequency = (notes: Note[]) => {
   return Object.entries(tagCount).map(([name, value]) => ({ name, value }));
 };
 
+const getArchivedNotes = (notes: Note[]) => {
+  const now = new Date();
+  const twoMonthsAgo = new Date();
+  twoMonthsAgo.setMonth(now.getMonth() - 2);
+  return notes.filter((note) => new Date(note.createdAt) < twoMonthsAgo);
+};
+
 export { formatDate, formatTime }; // General Utility functions.
-export { filterNotesByStatus, getNotesCreatedByDate, getTagFrequency }; // Notes filtering Utility functions.
+export {
+  filterNotesByStatus,
+  getNotesCreatedByDate,
+  getTagFrequency,
+  getArchivedNotes,
+}; // Notes filtering Utility functions.
