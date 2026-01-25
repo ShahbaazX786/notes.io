@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import DashboardHeader from "./components/dashboardHeader";
 import DashboardSideBar from "./components/sideBar";
 import { badToast, goodToast } from "@/lib/api/api-status";
+import BottomMenu from "@/components/custom/BottomMenu";
 
 const DashboardLayout = ({ children }: ReactChildren) => {
   const { notesQuery } = useNotes();
@@ -30,6 +31,7 @@ const DashboardLayout = ({ children }: ReactChildren) => {
           {children}
         </main>
       </SidebarProvider>
+      <BottomMenu />
     </div>
   );
 };

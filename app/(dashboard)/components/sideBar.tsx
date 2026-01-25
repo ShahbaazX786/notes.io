@@ -54,11 +54,11 @@ const DashboardSideBar = () => {
     <Sidebar collapsible="icon">
       <SidebarHeader className="flex justify-center items-center py-2">
         <Image
-          src={"/Logo.png"}
+          src={"/Logo.svg"}
           width={100}
           height={100}
           alt="Notes.io Logo"
-          className="w-12 h-12 shadow-lg rounded-full"
+          className="w-12 h-12 shadow-lg bg-white text-white"
         />
         <p className="text-sm md:text-lg font-bold">Notes.io</p>
       </SidebarHeader>

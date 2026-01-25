@@ -10,7 +10,7 @@ const NavbarComponent = () => {
       <div className="flex flex-row justify-between items-center px-4 py-2 border-b-2 shadow-sm">
         <Link href={"/"} className="flex justify-center items-baseline">
           <Image
-            src={"/Logo.png"}
+            src={"/Logo.svg"}
             alt="Brand Logo"
             height={24}
             width={24}

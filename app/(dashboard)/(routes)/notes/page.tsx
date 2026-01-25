@@ -17,8 +17,8 @@ const NotesPage = () => {
   };
 
   return (
-    <div className="w-full h-full flex justify-start items-start flex-col relative">
-      <div className="flex justify-center items-start flex-wrap gap-6 w-[99%] mx-auto overflow-y-auto pb-10 pt-8">
+    <div className="w-full h-full flex justify-start items-start flex-col">
+      <div className="flex justify-center items-start flex-wrap gap-6 w-[99%] mx-auto pb-10 pt-8">
         {notes.length > 0 ? (
           visibleNotes.map((note: Note) => (
             <NoteCard key={note._id} note={note} />
